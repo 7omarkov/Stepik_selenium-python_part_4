@@ -9,6 +9,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture()
 def browser(request):
+    myvar = 1
     my_language = request.config.getoption("--language")
     if not my_language:
         raise pytest.UsageError("set --language!!")
@@ -16,7 +17,7 @@ def browser(request):
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': my_language})
     browser = webdriver.Chrome(options=options)
-    yield browser
+    yield browser, myvar
     print("\nquit browser..")
     #time.sleep(5)
     browser.quit()
