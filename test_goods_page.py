@@ -18,6 +18,30 @@ def test_guest_can_add_product_to_basket(browser, offer_id):
     time.sleep(1)
     page.cart_and_price_should_be_equal()
     time.sleep(1)
+@pytest.mark.xfail()
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+    page = GoodsPage(browser, link)
+    page.open()
+    page.add_to_cart()
+    page.should_not_be_success_message()
+
+
+def test_guest_cant_see_success_message(browser):
+    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+    page = GoodsPage(browser, link)
+    page.open()
+    page.should_not_be_success_message()
+
+@pytest.mark.xfail()
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+    page = GoodsPage(browser, link)
+    page.open()
+    page.add_to_cart()
+    page.success_message_is_disappeared()
+
+    pass
 
 
 if __name__ == "__main__":
