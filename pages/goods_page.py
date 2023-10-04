@@ -1,4 +1,7 @@
 import time
+
+import pytest
+
 from .base_page import BasePage
 from .locators import GoodsPageLocators
 
@@ -12,10 +15,19 @@ class GoodsPage(BasePage):
     def should_be_added_message(self):
         added_message = self.browser.find_element(*GoodsPageLocators.ADDED_MESSAGE)
         goods_name = self.browser.find_element(*GoodsPageLocators.GOODS_NAME)
-        assert added_message.text == goods_name.text, f"Item {goods_name.text()} is missing in the cart"
+        try:
+            assert added_message.text == goods_name.text, f"Item {goods_name.text} is missing in the cart"
+        except AssertionError:
+            print(self.browser.current_url)
+            raise AssertionError(f"Item {goods_name.text} is missing in the cart")
 
     def cart_and_price_should_be_equal(self):
         cart_price = self.browser.find_element(*GoodsPageLocators.CART_PRICE)
         goods_price = self.browser.find_element(*GoodsPageLocators.GOODS_PRICE)
-        assert cart_price.text == goods_price.text, f"Cart price isn't equal to the item price"
+        try:
+            assert cart_price.text == goods_price.text, f"Cart price isn't equal to the item price"
+        except AssertionError:
+            print(self.browser.current_url)
+            raise AssertionError(f"Cart price isn't equal to the item price")
+
 
