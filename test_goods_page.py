@@ -8,6 +8,34 @@ from pages.goods_page import GoodsPage
 import time
 
 
+class TestUserAddToBasketFromProductPage():
+    def test_user_can_add_product_to_basket(self, browser):
+        link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+        page = GoodsPage(browser, link)
+        page.open()
+        page.go_to_login_page()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_page()
+        login_page.register_new_user('123@a.ru', "!fasdA123123")
+        time.sleep(1)
+        page.add_to_cart()
+        page.should_be_added_message()
+        time.sleep(1)
+        page.cart_and_price_should_be_equal()
+        time.sleep(1)
+
+    def test_user_cant_see_success_message_after_adding_product_to_basket(self, browser):
+        link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+        page = GoodsPage(browser, link)
+        page.open()
+        page.add_to_cart()
+        page.should_not_be_success_message()
+
+
+
+
+
+
 @pytest.mark.parametrize("offer_id",[0,1,2,3,4,5,6,
                                      pytest.param(7, marks=pytest.mark.xfail)
                                     ,8,9])
