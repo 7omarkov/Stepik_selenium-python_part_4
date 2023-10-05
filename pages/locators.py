@@ -1,10 +1,9 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators():
+class BasePageLocators ():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-
-class LoginPageLocators ():
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
 
@@ -15,7 +14,18 @@ class GoodsPageLocators ():
     GOODS_NAME = (By.XPATH, "//div[@class='row']//h1")
     GOODS_PRICE = (By.XPATH, "//div[@class='row']//p[@class='price_color']")
 
-
-class CartPageLocators ():
+class LoginPageLocators ():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+
+
+class MainPageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+
+
+
+
+
+
+
+
