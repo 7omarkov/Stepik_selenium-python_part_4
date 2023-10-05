@@ -1,5 +1,7 @@
 from selenium.webdriver.common.by import By
 import pytest
+
+from pages.cart_page import CartPage
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.goods_page import GoodsPage
@@ -25,6 +27,16 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page.open()
     page.add_to_cart()
     page.should_not_be_success_message()
+
+def test_guest_cant_see_product_in_cart_opened_from_main_page(browser):
+
+    link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207"
+    page = GoodsPage(browser, link)
+    page.open()
+    page.go_to_cart_page()
+    cart_page = CartPage(browser, browser.current_url)
+    cart_page.cart_should_be_empty()
+    time.sleep(1)
 
 
 def test_guest_cant_see_success_message(browser):
