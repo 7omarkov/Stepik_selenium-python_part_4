@@ -7,12 +7,13 @@ class BasePageLocators ():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
     GOCART_LINK = (By.XPATH, "//*[text()='Посмотреть корзину']")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
-class CartPageLocators():
+class BasketPageLocators():
     CART_ITEMS = (By.XPATH, "//*[@class='basket-items']")
 
 
-class GoodsPageLocators ():
+class ProductPageLocators ():
     TO_CART_BUTTON = (By.XPATH, "//button[contains(@class, 'to-basket')]")
     ADDED_MESSAGE = (By.XPATH, "//div[@id='messages']/div[1]//strong")
     CART_PRICE = (By.XPATH, "//div[@id='messages']/div[3]//strong")

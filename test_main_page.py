@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import pytest
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-from pages.cart_page import CartPage
+from pages.basket_page import CartPage
 
 @pytest.mark.login_guest
 class TestLoginFromMainPage():
