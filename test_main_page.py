@@ -32,8 +32,5 @@ def test_guest_cant_see_product_in_cart_opened_from_main_page(browser):
     cart_page = CartPage(browser, browser.current_url)
     cart_page.cart_should_be_empty()
 
-
-
-
-if __name__ == "__main__":
-    pytest.main(["-v", "-m login_guest", "--tb=line"])
+if __name__ =="__main__":
+    pytest.main()

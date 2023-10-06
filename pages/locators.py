@@ -6,7 +6,7 @@ class BasePageLocators ():
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
-    GOCART_LINK = (By.XPATH, "//*[text()='Посмотреть корзину']")
+    GOCART_LINK = (By.PARTIAL_LINK_TEXT, "basket")
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 class BasketPageLocators():
